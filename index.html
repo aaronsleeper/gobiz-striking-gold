@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Still Striking Gold — GO-Biz Web Spike</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet" />
+<style>
+  /* ---- Campaign tokens (locked creative) ---- */
+  :root{
+    --navy:#0D1B2A;
+    --cream:#F5F0E8;
+    --crimson:#8B1A2E;
+    --white:#FFFFFF;
+    --navy-90:rgba(13,27,42,.90);
+    --navy-70:rgba(13,27,42,.70);
+    --navy-00:rgba(13,27,42,0);
+    --display:"Barlow Condensed", system-ui, sans-serif;
+    --body:"Barlow", system-ui, sans-serif;
+    --maxw:1180px;
+    --gutter:clamp(20px,5vw,64px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--cream);color:var(--navy);
+    font-family:var(--body);font-size:18px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--display);margin:0;line-height:1.02;text-transform:uppercase;letter-spacing:.01em}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+  /* Accessible focus + skip link */
+  a:focus-visible,button:focus-visible,.card:focus-within{outline:3px solid var(--crimson);outline-offset:3px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--navy);color:var(--cream);padding:10px 16px;z-index:100}
+  .skip:focus{left:12px;top:12px}
+
+  /* ---- Top bar ---- */
+  .topbar{position:absolute;inset:0 0 auto 0;z-index:10}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
+  .brand{font-family:var(--display);font-weight:900;letter-spacing:.06em;font-size:20px;color:var(--cream);text-decoration:none}
+  .brand .bear{color:var(--crimson)}
+  .topnav{display:flex;gap:26px}
+  .topnav a{color:var(--cream);text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:6px 2px;border-bottom:2px solid transparent}
+  .topnav a:hover{border-bottom-color:var(--crimson)}
+  @media(max-width:720px){.topnav{display:none}}
+
+  /* ---- Hero: b&w (historical) -> color (modern) — the load-bearing visual idea ---- */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
+  .hero__img,.hero__img--gray{position:absolute;inset:0;background:url("aerial-city-grid.jpeg") center/cover no-repeat}
+  .hero__img--gray{filter:grayscale(100%) contrast(1.05);
+    -webkit-mask-image:linear-gradient(100deg,#000 0%,#000 34%,transparent 68%);
+    mask-image:linear-gradient(100deg,#000 0%,#000 34%,transparent 68%);}
+  .hero__scrim{position:absolute;inset:0;background:
+     linear-gradient(0deg,var(--navy) 2%,var(--navy-70) 26%,var(--navy-00) 60%),
+     linear-gradient(90deg,var(--navy-90) 0%,var(--navy-70) 30%,var(--navy-00) 62%);}
+  .hero__content{position:relative;z-index:2;padding-block:0 clamp(40px,7vw,84px);max-width:820px}
+  .eyebrow{font-family:var(--body);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:13px;color:var(--cream);opacity:.9;margin:0 0 14px}
+  .hero h1{color:var(--cream);font-weight:900;font-size:clamp(58px,11vw,148px)}
+  .hero h1 .gold{color:var(--cream)}/* palette-locked: no literal gold; crimson fails AA on navy, so cream. Gold/crimson accent held as a Misfit creative option, not baked in */
+  .hero__sub{margin:18px 0 0;color:var(--cream);font-size:clamp(19px,2.3vw,26px);font-weight:500;max-width:44ch}
+  .hero__sub b{font-weight:700}
+
+  /* ---- Proof band ---- */
+  .proof{background:var(--navy);color:var(--cream);padding-block:clamp(44px,6vw,76px)}
+  .proof h2{font-size:14px;letter-spacing:.2em;color:var(--cream);opacity:.7;font-weight:600;margin-bottom:32px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,4vw,48px)}
+  @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);gap:36px}}
+  .stat .num{font-family:var(--display);font-weight:900;font-size:clamp(44px,6vw,76px);color:var(--white);line-height:.95}
+  .stat .lbl{font-size:15px;margin-top:8px;color:var(--cream);opacity:.86;line-height:1.35}
+
+  /* ---- Audience paths: three committed lenses ---- */
+  .paths{padding-block:clamp(56px,8vw,96px)}
+  .paths .kicker{font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:var(--crimson)}
+  .paths h2{font-size:clamp(32px,5vw,52px);color:var(--navy);margin:10px 0 40px;max-width:16ch}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+  .card{position:relative;background:var(--white);border:1px solid rgba(13,27,42,.10);border-radius:6px;padding:30px 28px 26px;display:flex;flex-direction:column;min-height:280px;transition:transform .18s ease,box-shadow .18s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(13,27,42,.5)}
+  .card .idx{font-family:var(--display);font-weight:900;font-size:15px;color:var(--crimson);letter-spacing:.1em}
+  .card h3{font-size:30px;color:var(--navy);margin:14px 0 12px}
+  .card p{margin:0;font-size:16px;color:#33404d;line-height:1.5}
+  .card .go{margin-top:auto;padding-top:22px;font-family:var(--display);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:15px;color:var(--crimson);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .card .go::after{content:"→";transition:transform .18s ease}
+  .card:hover .go::after{transform:translateX(4px)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--crimson);border-radius:6px 0 0 6px;opacity:0;transition:opacity .18s ease}
+  .card:hover::before,.card:focus-within::before{opacity:1}
+
+  /* ---- The Real California (facts / data-story content type) ---- */
+  .real{background:var(--cream);border-top:1px solid rgba(13,27,42,.10);padding-block:clamp(52px,7vw,88px)}
+  .real .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+  @media(max-width:860px){.real .grid{grid-template-columns:1fr;gap:28px}}
+  .real h2{font-size:clamp(30px,4.4vw,46px);color:var(--navy);max-width:14ch}
+  .real p{margin:16px 0 0;font-size:18px;color:#33404d;max-width:52ch}
+  .real .facts{display:flex;flex-direction:column;gap:14px}
+  .real .fact{background:var(--white);border-left:4px solid var(--crimson);padding:16px 20px;border-radius:0 6px 6px 0}
+  .real .fact b{font-family:var(--display);font-weight:900;font-size:22px;color:var(--navy);display:block}
+  .real .fact span{font-size:15px;color:#33404d}
+
+  /* ---- Footer ---- */
+  footer{background:var(--navy);color:var(--cream);padding-block:44px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer .brand{color:var(--cream)}
+  footer p{margin:0;font-size:13px;opacity:.7;max-width:52ch}
+
+  /* ---- Spike version badge (per artifact-version-label) ---- */
+  .badge{position:fixed;right:12px;bottom:12px;z-index:50;background:var(--navy);color:var(--cream);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.03em;padding:7px 12px;border-radius:6px;box-shadow:0 6px 20px -8px rgba(0,0,0,.5)}
+  .badge b{color:var(--cream)}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#">CALIFORNIA <span class="bear">GO-Biz</span></a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#invest">Invest</a>
+      <a href="#visit">Visit</a>
+      <a href="#lead">Lead</a>
+      <a href="#real">The Real California</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO — b&w historical resolving into full-color modern California -->
+  <section class="hero" aria-label="California — Still Striking Gold">
+    <div class="hero__img" role="img" aria-label="Aerial view of a modern California metropolitan grid"></div>
+    <div class="hero__img--gray" aria-hidden="true"></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap hero__content">
+      <p class="eyebrow">The California Brand Campaign</p>
+      <h1>Still Striking<br /><span class="gold">Gold</span></h1>
+      <p class="hero__sub"><b>$4.1 trillion</b> and counting. California is the 4th largest economy on Earth — and it never stopped growing.</p>
+    </div>
+  </section>
+
+  <!-- PROOF BAND — approved stat pool only -->
+  <section class="proof" aria-label="California by the numbers">
+    <div class="wrap">
+      <h2>THE NUMBERS</h2>
+      <div class="stats">
+        <div class="stat"><div class="num">4th</div><div class="lbl">largest economy on Earth — ahead of most nations</div></div>
+        <div class="stat"><div class="num">⅓</div><div class="lbl">of America's vegetables are grown here</div></div>
+        <div class="stat"><div class="num">33<span style="font-size:.5em">/50</span></div><div class="lbl">of the world's leading AI companies are headquartered here</div></div>
+        <div class="stat"><div class="num">49%</div><div class="lbl">of all U.S. venture capital lands in California</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE PATHS — the three committed lenses -->
+  <section class="paths" aria-label="Choose your path">
+    <div class="wrap">
+      <p class="kicker">One California. Different doors in.</p>
+      <h2>Find what California can do for you.</h2>
+      <div class="cards">
+        <article class="card" id="invest">
+          <span class="idx">01</span>
+          <h3>Invest &amp; Build</h3>
+          <p>Domestic investment, startups, and businesses relocating to the state that captures nearly half of U.S. venture capital.</p>
+          <a class="go" href="#">Explore investment</a>
+        </article>
+        <article class="card" id="visit">
+          <span class="idx">02</span>
+          <h3>Visit &amp; Host</h3>
+          <p>Tourism, sport, and the world's biggest stages — from the 2026 World Cup toward the 2028 Games.</p>
+          <a class="go" href="#">Explore visitation</a>
+        </article>
+        <article class="card" id="lead">
+          <span class="idx">03</span>
+          <h3>Lead &amp; Belong</h3>
+          <p>For business leaders investing in California's innovation ecosystem, civic life, and cultural leadership.</p>
+          <a class="go" href="#">Explore leadership</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE REAL CALIFORNIA — positive-only facts, never naming misinformation -->
+  <section class="real" id="real" aria-label="The Real California">
+    <div class="wrap grid">
+      <div>
+        <h2>The numbers don't campaign. They just add up.</h2>
+        <p>A source of record for California's economy — every figure sourced, every claim you can check. Confidence, not correction.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>40% of U.S. container imports</b><span>move through California's ports.</span></div>
+        <div class="fact"><b>58 Fortune 500 companies</b><span>call California home — more than any other state.</span></div>
+        <div class="fact"><b>1 in 4 U.S. patents</b><span>start here.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#">CALIFORNIA <span class="bear">GO-Biz</span></a>
+    <p>Concept build for the California Brand Campaign. Production implementation aligns with the California Design System for accessibility (WCAG 2.1 AA) and state compliance.</p>
+  </div>
+</footer>
+
+<div class="badge">GO-Biz web concept · <b>v0.1</b> · FPO imagery, palette-locked</div>
+</body>
+</html>
