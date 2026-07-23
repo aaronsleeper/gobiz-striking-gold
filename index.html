@@ -48,10 +48,11 @@
   @media(max-width:720px){.topnav{display:none}}
 
   /* ---- Hero: port at sunset, sentence-case display heading ---- */
-  .hero{position:relative;min-height:min(768px,82vh);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:48px;overflow:hidden;background:var(--navy)}
+  .hero{position:relative;min-height:min(768px,82vh);display:flex;flex-direction:column;justify-content:flex-end;padding-block:48px;overflow:hidden;background:var(--navy)}
   .hero__img{position:absolute;inset:0;background:url("img/hero-port.jpg") center/cover no-repeat}
   .hero__scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,27,42,.72) 0%,rgba(13,27,42,.28) 26%,rgba(13,27,42,0) 55%)}
-  .hero__copy{position:relative;z-index:2;max-width:520px;display:flex;flex-direction:column;gap:7px}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero__copy{max-width:520px;display:flex;flex-direction:column;gap:7px}
   .hero__copy h1{font-family:var(--display);font-weight:700;font-size:clamp(52px,7.2vw,72px);line-height:1.0;color:var(--white);margin:0}
   .hero__copy p{font-family:var(--body);font-weight:400;font-size:clamp(19px,2vw,24px);color:var(--cream);margin:0}
 
@@ -152,9 +153,11 @@
   <section class="hero" aria-label="California — Still Striking Gold">
     <div class="hero__img" role="img" aria-label="Aerial view of a California container port at sunset"></div>
     <div class="hero__scrim" aria-hidden="true"></div>
-    <div class="hero__copy">
-      <h1>Still Striking Gold</h1>
-      <p>The fourth-largest economy on Earth. Built here.</p>
+    <div class="wrap">
+      <div class="hero__copy">
+        <h1>Still Striking Gold</h1>
+        <p>The fourth-largest economy on Earth. Built here.</p>
+      </div>
     </div>
   </section>
 
@@ -270,6 +273,6 @@
   </div>
 </footer>
 
-<div class="badge">GO-Biz web concept · <b>v0.2</b> · FPO imagery, palette-locked</div>
+<div class="badge">GO-Biz web concept · <b>v0.3</b> · FPO imagery, palette-locked</div>
 </body>
 </html>
