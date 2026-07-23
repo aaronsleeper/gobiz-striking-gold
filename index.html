@@ -39,12 +39,13 @@
   .skip:focus{left:12px;top:12px}
 
   /* ---- Top bar ---- */
-  .topbar{position:absolute;inset:0 0 auto 0;z-index:10}
+  /* Header: solid navy bar above the hero (matches Figma final — nav/logo never overlay the image) */
+  .topbar{position:relative;z-index:10;background:var(--navy)}
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
-  .brand{font-family:var(--display);font-weight:900;letter-spacing:.06em;font-size:20px;color:var(--cream);text-decoration:none}
-  .brand .bear{color:var(--crimson)}
-  .topnav{display:flex;gap:26px}
-  .topnav a{color:var(--cream);text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:6px 2px;border-bottom:2px solid transparent}
+  .brand{display:inline-flex;align-items:center;text-decoration:none}
+  .brand-logo{display:block;height:32px;width:auto}
+  .topnav{display:flex;gap:30px}
+  .topnav a{color:var(--cream);text-decoration:none;font-weight:500;font-size:15px;letter-spacing:.01em;padding:6px 2px;border-bottom:2px solid transparent}
   .topnav a:hover{border-bottom-color:var(--crimson)}
   @media(max-width:720px){.topnav{display:none}}
 
@@ -118,12 +119,12 @@
 
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#">CALIFORNIA <span class="bear">GO-Biz</span></a>
+    <a class="brand" href="#" aria-label="CA.gov — Governor's Office of Business and Economic Development"><img class="brand-logo" src="ca-gov-logo.svg" alt="CA.gov" /></a>
     <nav class="topnav" aria-label="Primary">
+      <a href="#paths">Businesses</a>
       <a href="#invest">Invest</a>
-      <a href="#visit">Visit</a>
-      <a href="#lead">Lead</a>
-      <a href="#real">The Real California</a>
+      <a href="#visit">Visitors</a>
+      <a href="#lead">Stay</a>
     </nav>
   </div>
 </header>
@@ -200,7 +201,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#">CALIFORNIA <span class="bear">GO-Biz</span></a>
+    <a class="brand" href="#" aria-label="CA.gov — Governor's Office of Business and Economic Development"><img class="brand-logo" src="ca-gov-logo.svg" alt="CA.gov" /></a>
     <p>Concept build for the California Brand Campaign. Production implementation aligns with the California Design System for accessibility (WCAG 2.1 AA) and state compliance.</p>
   </div>
 </footer>
